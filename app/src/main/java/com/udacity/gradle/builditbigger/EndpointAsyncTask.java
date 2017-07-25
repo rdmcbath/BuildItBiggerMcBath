@@ -20,6 +20,7 @@ public class EndpointAsyncTask extends AsyncTask<Void, Void, String> {
         private JokeResultListener listener;
 
     public EndpointAsyncTask(JokeResultListener listener){
+
         this.listener = listener;
     }
 
@@ -54,6 +55,7 @@ public class EndpointAsyncTask extends AsyncTask<Void, Void, String> {
 
         @Override
         protected void onPostExecute(String joke) {
+
             listener.onJokeReceived(joke);
         }
     }
