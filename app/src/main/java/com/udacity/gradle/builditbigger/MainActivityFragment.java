@@ -17,7 +17,7 @@ import com.google.android.gms.ads.AdView;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment implements JokeResultListener {
     private ProgressBar mLoadingSpinner;
     private JokeResultListener listener;
 
@@ -58,7 +58,7 @@ public class MainActivityFragment extends Fragment {
 
     private void getJoke() {
         mLoadingSpinner.setVisibility(View.VISIBLE);
-        new EndpointAsyncTask(listener).execute();
+        new EndpointAsyncTask(this).execute();
     }
 
     private void launchJokeDisplayActivity(String joke) {
