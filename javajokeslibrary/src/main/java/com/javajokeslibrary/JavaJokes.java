@@ -12,7 +12,7 @@ public class JavaJokes {
         switch (random.nextInt(4)) {
 
             case 0:
-                joke = "\"The Wave\" was banned in Sanford Stadium? " +
+                joke = "\"The Wave\" was banned in Sanford Stadium... " +
                         "\n\n because 2 Bulldog fans drowned last year.";
                 break;
             case 1:

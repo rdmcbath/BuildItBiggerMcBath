@@ -6,16 +6,41 @@ android {
 
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
-        minSdkVersion 16
+        minSdkVersion 24
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+
+    lintOptions {
+            abortOnError false
+        }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+            versionName "1.0-free"
+            minSdkVersion 24
+            targetSdkVersion 24
+        }
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+            versionName "1.0-paid"
+            minSdkVersion 24
+            targetSdkVersion 24
         }
     }
 }
@@ -25,16 +50,24 @@ configurations {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Android runner and rules support
+    androidTestCompile 'com.android.support:support-annotations:25.3.1'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    // Espresso support
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':javajokeslibrary')
     compile project(path: ':androidjokesdisplay')
-    compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.google.android.gms:play-services-ads:9.8.0'
+    compile project(path: ':backend GCE', configuration: 'android-endpoints')
+    compile 'com.android.support:appcompat-v7:25.+'
+    compile 'com.google.android.gms:play-services-ads:11.0.2'
     compile 'com.google.api-client:google-api-client:1.21.0'
     compile 'com.google.http-client:google-http-client-android:1.12.0-be‌​ta'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
-    compile project(path: ':backend GCE', configuration: 'android-endpoints')
+    compile 'com.android.support:design:25.3.1'
+    paidCompile 'com.android.support:design:25.3.1'
+    testCompile 'junit:junit:4.12'
 }
