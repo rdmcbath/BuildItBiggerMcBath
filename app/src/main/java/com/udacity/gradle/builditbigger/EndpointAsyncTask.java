@@ -56,5 +56,6 @@ public class EndpointAsyncTask extends AsyncTask<Void, Void, String> {
         protected void onPostExecute(String joke) {
             listener.onJokeReceived(joke);
         }
-    }
+
+}
 

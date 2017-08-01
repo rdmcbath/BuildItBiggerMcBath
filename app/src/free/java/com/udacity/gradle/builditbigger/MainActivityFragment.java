@@ -75,7 +75,7 @@ public class MainActivityFragment extends Fragment implements JokeResultListener
         }
     }
 
-    private void getJoke() {
+    public void getJoke() {
         mLoadingSpinner.setVisibility(View.VISIBLE);
         new EndpointAsyncTask(this).execute();
     }
