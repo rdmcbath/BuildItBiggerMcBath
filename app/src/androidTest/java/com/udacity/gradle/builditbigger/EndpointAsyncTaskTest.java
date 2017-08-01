@@ -51,8 +51,9 @@ public class EndpointAsyncTaskTest extends AndroidTestCase implements JokeResult
         joke = j;
         signal.countDown();
     }
-
+    
     @Override
     public void onJokeReceived(String joke) {
+
     }
 }

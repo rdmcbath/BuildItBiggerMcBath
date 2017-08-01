@@ -6,7 +6,5 @@ package com.udacity.gradle.builditbigger;
 
 public interface JokeResultListener {
 
-    void downloadCompleted(String j);
-
     void onJokeReceived(String joke);
 }
